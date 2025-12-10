@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - DIU Medical Center</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .doctor-dashboard { display: flex; min-height: 100vh; }
+        .doctor-sidebar { width: 260px; background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%); }
+        .doctor-main { margin-left: 260px; flex: 1; padding: 2rem; }
+        @media (max-width: 768px) {
+            .doctor-main { margin-left: 0; padding: 1rem; }
+            .doctor-sidebar { width: 100%; transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="doctor-dashboard">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar doctor-sidebar">
+            <div class="sidebar-header">
+                <h2>👨‍⚕️ My Dashboard</h2>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Doctor Portal</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-section="overview">📊 Overview</a>
+                <a href="#" class="nav-link" data-section="appointments">📅 My Appointments</a>
+                <a href="#" class="nav-link" data-section="schedule">🗓️ Schedule</a>
+                <a href="#" class="nav-link" data-section="profile">👨‍⚕️ My Profile</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="doctor-main">
+            <header class="dashboard-header">
+                <h1 id="page-title">Dashboard Overview</h1>
+                <div class="header-actions">
+                    <span id="current-date"></span>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview-section" class="dashboard-section">
+                <div class="card">
+                    <h3>Welcome back!</h3>
+                    <div id="doctor-welcome"></div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <h3 id="today-count">0</h3>
+                            <p>Today's Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3 id="upcoming-count">0</h3>
+                            <p>Upcoming This Week</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3 id="completed-count">0</h3>
+                            <p>Completed Today</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🎯 Today's Schedule</h3>
+                    <div id="today-appointments">
+                        <p class="no-data">No appointments today</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>My Appointments</h2>
+                </div>
+
+                <div class="card">
+                    <h3>📅 All Appointments</h3>
+                    <div class="filters-card">
+                        <div class="filters-grid">
+                            <input type="date" id="filter-date" class="filter-input" placeholder="Filter by date">
+                            <select id="filter-status" class="filter-select">
+                                <option value="all">All Status</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="doctor-appointments">
+                        <p class="no-data">No appointments</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>My Schedule</h2>
+                </div>
+
+                <div class="card">
+                    <h3>⏰ Working Hours & Availability</h3>
+                    <div id="doctor-schedule">
+                        <!-- Schedule will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>📅 Upcoming Week</h3>
+                    <div id="upcoming-week">
+                        <!-- Upcoming appointments will be listed here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                </div>
+
+                <div class="card">
+                    <div id="doctor-profile">
+                        <!-- Profile info will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div id="status-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Appointment Status</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-appointment-info"></div>
+                <div class="form-group">
+                    <label>New Status</label>
+                    <select id="new-status">
+                        <option value="scheduled">Scheduled</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button id="confirm-status-btn" class="btn btn-primary">Update Status</button>
+                    <button class="btn btn-secondary modal-close">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <div id="toast-container"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard-doctor.js"></script>
+</body>
+</html>

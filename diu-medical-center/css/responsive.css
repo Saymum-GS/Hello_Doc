@@ -1,0 +1,256 @@
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablets and below (1024px) */
+@media (max-width: 1024px) {
+    .dashboard-sidebar {
+        width: 220px;
+    }
+    
+    .dashboard-main {
+        margin-left: 220px;
+    }
+    
+    .charts-grid,
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile and small tablets (768px) */
+@media (max-width: 768px) {
+
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Hero */
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Navbar */
+    .navbar-toggle {
+        display: flex;
+    }
+    
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        box-shadow: var(--shadow);
+        padding: 1rem 0;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 1rem 1.5rem;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    /* Grids */
+    .features-grid,
+    .actions-grid,
+    .doctors-grid,
+    .stats-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-row,
+    .filter-section {
+        flex-direction: column;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Dashboard */
+    .dashboard-sidebar {
+        width: 100%;
+        transform: translateX(-100%);
+        transition: var(--transition);
+        position: fixed;
+    }
+
+    .dashboard-sidebar.active {
+        transform: translateX(0);
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .section-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-table {
+        font-size: 0.875rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem;
+    }
+
+    /* Profile */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    /* Doctor Card */
+    .doctor-actions {
+        flex-direction: column;
+    }
+
+    /* Forms */
+    .form-actions {
+        flex-direction: column;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    /* Toast */
+    #toast-container {
+        left: 10px;
+        right: 10px;
+    }
+
+    .toast {
+        min-width: auto;
+    }
+
+    /* Charts */
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card canvas {
+        max-height: 250px;
+    }
+}
+
+/* Small mobile (480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .login-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+
+    .stat-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .footer,
+    .btn,
+    .action-btn,
+    #toast-container,
+    .dashboard-sidebar,
+    .filter-section,
+    .section-actions,
+    .theme-toggle {
+        display: none !important;
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .card,
+    .appointment-slip {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}

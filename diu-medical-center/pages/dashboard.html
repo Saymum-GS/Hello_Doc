@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - DIU Medical Center</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <h2>🏥 Admin Panel</h2>
+                <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">DIU Medical Center</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-section="overview">📊 Overview</a>
+                <a href="#" class="nav-link" data-section="appointments">📅 Appointments</a>
+                <a href="#" class="nav-link" data-section="patients">👥 Patients</a>
+                <a href="#" class="nav-link" data-section="analytics">📈 Analytics</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="btn btn-secondary btn-block">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h1 id="page-title">Dashboard Overview</h1>
+                <div class="header-actions">
+                    <span id="current-date"></span>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview-section" class="dashboard-section">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3 id="total-appointments">0</h3>
+                            <p>Total Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-info">
+                            <h3 id="today-appointments">0</h3>
+                            <p>Today's Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3 id="total-patients">0</h3>
+                            <p>Registered Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👨‍⚕️</div>
+                        <div class="stat-info">
+                            <h3 id="total-doctors">0</h3>
+                            <p>Medical Staff</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Appointments by Doctor</h3>
+                        <canvas id="doctorChart" width="400" height="300"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Appointments by Specialty</h3>
+                        <canvas id="specialtyChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Monthly Appointment Trend</h3>
+                    <canvas id="monthlyChart" width="800" height="300"></canvas>
+                </div>
+
+                <!-- Today's Appointments -->
+                <div class="card">
+                    <h3>Today's Appointments</h3>
+                    <div id="today-appointments-list" class="appointments-list">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Manage Appointments</h2>
+                    <div class="section-actions">
+                        <button id="export-btn" class="btn btn-secondary">📥 Export JSON</button>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-card">
+                    <div class="filters-grid">
+                        <input type="text" id="search-appointments" class="filter-input" placeholder="Search by patient name...">
+                        <select id="filter-doctor" class="filter-select">
+                            <option value="all">All Doctors</option>
+                        </select>
+                        <select id="filter-specialty" class="filter-select">
+                            <option value="all">All Specialties</option>
+                        </select>
+                        <input type="date" id="filter-date" class="filter-input">
+                        <select id="filter-status" class="filter-select">
+                            <option value="all">All Status</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <select id="sort-appointments" class="filter-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Appointments Table -->
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Specialty</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-table-body">
+                                <!-- Will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-appointments" class="no-data" style="display: none;">
+                        <p>No appointments found</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patients Section -->
+            <section id="patients-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Registered Patients</h2>
+                </div>
+
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>DOB</th>
+                                    <th>Registered On</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patients-table-body">
+                                <!-- Will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Analytics & Reports</h2>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="card">
+                        <h3>Upcoming Appointments (7 Days)</h3>
+                        <div id="upcoming-appointments" class="appointments-list">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Most Booked Doctors</h3>
+                        <div id="top-doctors">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Appointment</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <input type="hidden" id="edit-appointment-id">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="edit-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <input type="time" id="edit-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Reason</label>
+                        <textarea id="edit-reason" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="edit-status" required>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/validation.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
