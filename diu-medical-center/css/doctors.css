@@ -1,0 +1,325 @@
+/* ========================================
+   DOCTORS PAGE STYLES
+   ======================================== */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+body.dark-mode .page-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.page-header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Doctors Section */
+.doctors-section {
+    padding: 3rem 0;
+}
+
+/* Filter Section */
+.filter-section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.filter-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.filter-select,
+.filter-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Shift Badges */
+.shift-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.shift-badge.day {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+body.dark-mode .shift-badge.day {
+    background-color: #78350f;
+    color: #fcd34d;
+}
+
+.shift-badge.evening {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+body.dark-mode .shift-badge.evening {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+}
+
+/* Doctors Grid */
+.doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.doctor-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.doctor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.doctor-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doctor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doctor-info {
+    padding: 1.5rem;
+}
+
+.doctor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+}
+
+.doctor-name {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.doctor-specialty {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.doctor-qualification {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.doctor-experience {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.doctor-timings {
+    background-color: var(--light-color);
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+body.dark-mode .doctor-timings {
+    background-color: var(--bg-color);
+}
+
+.doctor-timings strong {
+    color: var(--dark-color);
+}
+
+.doctor-email {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    word-break: break-word;
+}
+
+.doctor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.doctor-actions .btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+}
+
+/* Doctor Profile Page */
+.doctor-profile-section {
+    padding: 3rem 0;
+}
+
+.doctor-profile-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    align-items: center;
+}
+
+body.dark-mode .profile-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    background: white;
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info .specialty {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info .qualification {
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info .experience {
+    opacity: 0.9;
+}
+
+.profile-details {
+    padding: 2rem;
+}
+
+.detail-section {
+    margin-bottom: 2rem;
+}
+
+.detail-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.detail-section p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.profile-actions {
+    padding: 0 2rem 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.profile-actions .btn {
+    flex: 1;
+}
+
+/* Error Message */
+.error-message {
+    text-align: center;
+    padding: 3rem;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.error-message h2 {
+    color: var(--danger-color);
+    margin-bottom: 1rem;
+}
