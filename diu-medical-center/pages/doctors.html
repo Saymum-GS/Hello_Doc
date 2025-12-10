@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - DIU Medical Center</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/doctors.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="breadcrumbs-container">
+                <span class="breadcrumb-item"><a href="../index.html">Home</a></span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item active">Doctors</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Medical Professionals</h1>
+            <p>Meet our team of qualified doctors and medical staff</p>
+        </div>
+    </section>
+
+    <section class="doctors-section">
+        <div class="container">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="specialty-filter">Specialty:</label>
+                        <select id="specialty-filter" class="filter-select">
+                            <option value="all">All Specialties</option>
+                            <option value="Medical Officer">Medical Officer</option>
+                            <option value="Physiotherapist">Physiotherapist</option>
+                            <option value="Medical Assistant">Medical Assistant</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="shift-filter">Shift:</label>
+                        <select id="shift-filter" class="filter-select">
+                            <option value="all">All Shifts</option>
+                            <option value="day">☀️ Day Shift</option>
+                            <option value="evening">🌙 Evening Shift</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="search-doctor">Search:</label>
+                        <input type="text" id="search-doctor" class="filter-input" placeholder="Search by name...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors Grid -->
+            <div id="doctors-grid" class="doctors-grid">
+                <!-- Doctors will be loaded here dynamically -->
+            </div>
+
+            <div id="no-doctors" class="no-results" style="display: none;">
+                <p>No doctors found matching your criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <div id="toast-container"></div>
+
+    <script src="../js/components.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/doctors.js"></script>
+</body>
+</html>

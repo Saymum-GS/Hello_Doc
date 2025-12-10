@@ -1,0 +1,283 @@
+/* ========================================
+   APPOINTMENT BOOKING STYLES
+   ======================================== */
+
+/* Info Box */
+.info-box {
+    background-color: #dbeafe;
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .info-box {
+    background-color: #1e3a8a;
+    border-left-color: #60a5fa;
+}
+
+.info-box p {
+    margin-bottom: 0;
+    color: #1e40af;
+}
+
+body.dark-mode .info-box p {
+    color: #93c5fd;
+}
+
+.info-box a {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Doctor Info Box */
+.doctor-info-box {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .doctor-info-box {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.doctor-info-box h4 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.doctor-info-box p {
+    margin-bottom: 0.5rem;
+}
+
+/* Login Page */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    padding: 2rem;
+}
+
+body.dark-mode .login-page {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.login-container {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 450px;
+    width: 100%;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.login-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.login-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.login-info {
+    background-color: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+body.dark-mode .login-info {
+    background-color: #78350f;
+    border-color: #f59e0b;
+}
+
+.login-info p {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: #92400e;
+}
+
+body.dark-mode .login-info p {
+    color: #fcd34d;
+}
+
+.login-info code {
+    background-color: #fde68a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+body.dark-mode .login-info code {
+    background-color: #92400e;
+    color: #fcd34d;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Appointments Result (Lookup Page) */
+.appointments-result {
+    margin-top: 2rem;
+}
+
+.success-message,
+.error-message,
+.info-message {
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.success-message {
+    background-color: #d1fae5;
+    border-left: 4px solid var(--secondary-color);
+    color: #065f46;
+}
+
+body.dark-mode .success-message {
+    background-color: #064e3b;
+    color: #6ee7b7;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    border-left: 4px solid var(--danger-color);
+    color: #991b1b;
+}
+
+body.dark-mode .error-message {
+    background-color: #7f1d1d;
+    color: #fca5a5;
+}
+
+.info-message {
+    background-color: #dbeafe;
+    border-left: 4px solid var(--primary-color);
+    color: #1e40af;
+}
+
+body.dark-mode .info-message {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+}
+
+.appointments-list h4 {
+    margin: 1.5rem 0 1rem;
+    color: var(--dark-color);
+}
+
+.appointment-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.appointment-card:hover {
+    box-shadow: var(--shadow);
+}
+
+.appointment-card.past {
+    opacity: 0.7;
+}
+
+.appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.appointment-header h4 {
+    margin-bottom: 0;
+    color: var(--primary-color);
+}
+
+.appointment-details p {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.appointment-details strong {
+    color: var(--dark-color);
+}
+
+/* Appointment Slip */
+.appointment-slip {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.slip-header {
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.slip-header h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.slip-content {
+    margin-bottom: 1.5rem;
+}
+
+.slip-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.slip-label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.slip-value {
+    color: var(--text-color);
+}
+
+.slip-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-color);
+}
